@@ -1,0 +1,37 @@
+{
+  "name": "@epiijs/client",
+  "version": "0.1.0",
+  "description": "A simple React client runtime.",
+  "main": "build/index.js",
+  "scripts": {
+    "clean": "rm -rf build && rm -rf coverage && rm -rf .nyc_output",
+    "build": "npm run clean && tsc",
+    "lint": "eslint --ext .ts",
+    "test": "eslint --ext .ts && nyc --reporter=lcov mocha test/index.js --exit",
+    "lcov": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epiijs/client.git"
+  },
+  "keywords": [
+    "epii",
+    "web",
+    "client"
+  ],
+  "author": "Sartrey Lee <sartrey@163.com> (https://sartrey.cn)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/epiijs/client/issues"
+  },
+  "homepage": "https://github.com/epiijs/client#readme",
+  "devDependencies": {
+    "@epiijs/eslint-config": "^0.1.4",
+    "@tsconfig/node18": "^18.2.2",
+    "@types/node": "^20.8.0",
+    "eslint": "^8.50.0"
+  },
+  "dependencies": {
+    "@epiijs/config": "^0.1.2"
+  }
+}
