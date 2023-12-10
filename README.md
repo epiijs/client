@@ -3,7 +3,7 @@
 A simple React client runtime.
 
 - sealed entry for single page application
-- optional file-system based router 
+- optional file-system based router (WIP)
 
 # Install
 
@@ -20,23 +20,18 @@ npm i @epiijs/client --save-dev
 ├─ src
 │  ├─ .epiijs
 │  │  └─ (auto-generated)
-│  ├─ pages
-│  │  └─ (optional-routes)
 │  ├─ (others)
 │  └─ index.tsx
 └─ start.ts
 ```
 
-## start client
+## start client dev server
   
 ```ts
 import { startClient } from '@epiijs/client';
 
 startClient({
   name: 'your-client',
-  port: {
-    devServer: 3000
-  },
   path: {
     root: __dirname
   }
