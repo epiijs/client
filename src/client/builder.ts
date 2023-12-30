@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-import { IAppConfig } from '@epiijs/config';
+import { IAppConfig, getDirNameByImportMeta } from '@epiijs/config';
 
 function getLauncherDir(config: IAppConfig): string {
   return path.join(config.root, config.dirs.source, config.dirs.client, '.epiijs');
@@ -9,10 +9,12 @@ function getLauncherDir(config: IAppConfig): string {
 
 export async function deployLauncher(config: IAppConfig): Promise<void> {
   const launcherDir = getLauncherDir(config);
-  await fs.rm(launcherDir, { recursive: true });
+  await fs.rm(launcherDir, { recursive: true }).catch(error => {
+    if (error.code !== 'ENOENT') { throw error; }
+  });
   await fs.mkdir(launcherDir);
 
-  const fixturesDir = path.join(__dirname, '../fixtures');
+  const fixturesDir = path.join(getDirNameByImportMeta(import.meta), '../fixtures');
   const fixturesFiles = await fs.readdir(fixturesDir);
 
   for (const fileName of fixturesFiles) {

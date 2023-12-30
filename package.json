@@ -1,13 +1,14 @@
 {
   "name": "@epiijs/client",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A simple React client runtime.",
+  "type": "module",
   "main": "build/index.js",
+  "exports": "./build/index.js",
   "scripts": {
     "clean": "rm -rf build && rm -rf coverage && rm -rf .nyc_output",
-    "build": "npm run clean && tsc && cp -r src/fixtures build/fixtures",
-    "lint": "eslint --ext .ts",
-    "test": "eslint --ext .ts && nyc --reporter=lcov mocha test/index.js --exit",
+    "build": "npm run clean && eslint --ext .ts && tsc && cp -r src/fixtures build/fixtures",
+    "test": "npm run build && nyc --reporter=lcov mocha test/index.js --exit",
     "lcov": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -16,8 +17,8 @@
   },
   "keywords": [
     "epii",
-    "web",
-    "client"
+    "client",
+    "web"
   ],
   "author": "Sartrey Lee <sartrey@163.com> (https://sartrey.cn)",
   "license": "MIT",
@@ -27,18 +28,19 @@
   "homepage": "https://github.com/epiijs/client#readme",
   "devDependencies": {
     "@epiijs/eslint-config": "^0.1.4",
-    "@tsconfig/node18": "^18.2.2",
     "@types/node": "^20.8.0",
     "@types/react": "^18.2.41",
     "@types/react-dom": "^18.2.17",
     "eslint": "^8.50.0"
   },
   "dependencies": {
-    "@epiijs/config": "^0.3.0",
+    "@epiijs/config": "^0.4.2",
     "@vitejs/plugin-react": "^4.2.0",
     "less": "^4.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "vite": "^5.0.4"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

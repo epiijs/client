@@ -1,4 +1,4 @@
-# epii-client
+# @epiijs/client
 
 A simple React client runtime.
 
@@ -21,19 +21,23 @@ npm i @epiijs/client --save-dev
 │  ├─ .epiijs
 │  │  └─ (auto-generated)
 │  ├─ (others)
-│  └─ index.tsx
+│  ├─ index.tsx
+│  └─ index.less
 └─ start.ts
 ```
 
-## start client dev server
+## start client dev server or build client
   
 ```ts
 import { startClient } from '@epiijs/client';
 
-startClient({
+const appConfig = {
   name: 'your-client',
   path: {
-    root: __dirname
+    root: __dirname // or getDirNameByImportMeta
   }
-});
+};
+
+startClient(config);
+buildClient(config);
 ```

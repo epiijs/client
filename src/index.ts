@@ -1,6 +1,6 @@
 import { IAppConfig } from '@epiijs/config';
 
-import { startClient, buildClient } from './client/startup';
+import { startClient, buildClient } from './client/startup.js';
 
 export {
   startClient,
