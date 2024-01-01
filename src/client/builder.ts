@@ -57,7 +57,9 @@ export async function buildAppBundle(config: IAppConfig): Promise<void> {
   await vite.build({
     root: launcherDir,
     build: {
-      outDir: relativeDir
+      outDir: relativeDir,
+      // skip vite protection to write out of root
+      emptyOutDir: false
     }
   });
 }
