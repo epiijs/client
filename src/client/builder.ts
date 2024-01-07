@@ -59,7 +59,9 @@ export async function buildAppBundle(config: IAppConfig): Promise<void> {
     build: {
       outDir: relativeDir,
       // skip vite protection to write out of root
-      emptyOutDir: false
+      emptyOutDir: false,
+      // build assets into same dir as index.html
+      assetsDir: '.'
     }
   });
 }
